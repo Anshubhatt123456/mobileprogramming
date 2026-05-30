@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ATM Machine</title>
+
+  <!-- Font Awesome for Eye Icon -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+
+    body{
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .atm-box{
+      background: white;
+      width: 320px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px gray;
+    }
+
+    .balance-box{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .eye-btn{
+      background: none;
+      border: none;
+      color: black;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    input{
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    button{
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover{
+      background-color: #0056b3;
+    }
+
+    h2{
+      color: #333;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="atm-box">
+
+    <h2>ATM Machine</h2>
+
+    <div class="balance-box">
+
+      <h3 id="balance">Balance: Rs. 10000</h3>
+
+      <button class="eye-btn" onclick="toggleBalance()">
+        <i class="fa-solid fa-eye" id="eyeIcon"></i>
+      </button>
+
+    </div>
+
+    <input type="number" id="amount" placeholder="Enter Amount">
+
+    <br>
+
+    <button onclick="checkBalance()">Check Balance</button>
+
+    <button onclick="withdrawMoney()">Withdraw</button>
+
+    <button onclick="depositMoney()">Deposit</button>
+
+  </div>
+
+  <script>
+
+    let balance = 10000;
+    let pin = "1234";
+    let isHidden = false;
+
+    function updateBalance(){
+
+      if(isHidden){
+        document.getElementById("balance").innerText =
+        "Balance: ********";
+      }
+
+      else{
+        document.getElementById("balance").innerText =
+        "Balance: Rs. " + balance;
+      }
+    }
+
+    function toggleBalance(){
+
+      isHidden = !isHidden;
+
+      let eyeIcon = document.getElementById("eyeIcon");
+
+      if(isHidden){
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+      }
+
+      else{
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+      }
+
+      updateBalance();
+    }
+
+    function checkBalance(){
+      alert("Your Current Balance is Rs. " + balance);
+    }
+
+    function withdrawMoney(){
+
+      let amount =
+      parseInt(document.getElementById("amount").value);
+
+      if(amount > balance){
+        alert("Insufficient Balance");
+      }
+
+      else if(amount <= 0 || isNaN(amount)){
+        alert("Enter Valid Amount");
+      }
+
+      else{
+        balance = balance - amount;
+        updateBalance();
+        alert("Withdrawal Successful");
+      }
+    }
+
+    function depositMoney(){
+
+      let userPin = prompt("Enter ATM PIN");
+
+      if(userPin === pin){
+
+        let amount =
+        parseInt(document.getElementById("amount").value);
+
+        if(amount <= 0 || isNaN(amount)){
+          alert("Enter Valid Amount");
+        }
+
+        else{
+          balance = balance + amount;
+          updateBalance();
+          alert("Deposit Successful");
+        }
+      }
+
+      else{
+        alert("Incorrect PIN");
+      }
+    }
+
+  </script>
+
+</body>
+</html>

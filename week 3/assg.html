@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Card Demo</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        padding: 20px;
+        background: #f4f4f4;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      #profile-card {
+        width: 450px;
+        margin: 20px auto;
+        padding: 20px;
+        background: rgb(255, 0, 0);
+        border: 1px solid #ccc;
+        text-align: center;
+        position: relative;
+      }
+
+      #profile-photo {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+
+      #skills-list {
+        text-align: left;
+        width: fit-content;
+        margin: auto;
+      }
+
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        min-height: 50px;
+        border: 2px dashed gray;
+        background: white;
+      }
+
+      .controls {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      button {
+        margin: 5px;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+
+      .highlighted {
+        border: 4px solid gold !important;
+        background-color: #fff8dc;
+        box-shadow: 0 0 20px gold;
+      }
+
+      .dark-mode {
+        background-color: #333 !important;
+        color: white;
+      }
+
+      .rounded {
+        border-radius: 50%;
+      }
+
+      .shadow {
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Profile Card</h1>
+
+    <div id="profile-card">
+      <img
+        id="profile-photo"
+        src="/week 3/557725844_759970907078117_3951288541930903062_n.jpg"
+        alt="Profile Photo"
+      />
+
+      <h2 id="student-name">Anshu Bhatt</h2>
+
+      <p id="student-bio">
+        <strong>Web Developer</strong> and <em>Technology Enthusiast</em>.
+      </p>
+
+      <input type="text" id="nickname-input" placeholder="Enter nickname" />
+
+      <h3>Skills</h3>
+
+      <ul id="skills-list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>jQuery</li>
+      </ul>
+    </div>
+
+    <div class="controls">
+      <h3>GET & SET</h3>
+
+      <button id="show-name">Show Name</button>
+      <button id="change-name">Change Name</button>
+      <button id="show-bio">Show Bio</button>
+      <button id="get-input">Get Input</button>
+      <button id="set-input">Set Input</button>
+
+      <hr />
+
+      <h3>CSS CLASSES</h3>
+
+      <button id="highlight-card">Highlight Card</button>
+      <button id="remove-highlight">Remove Highlight</button>
+      <button id="toggle-dark-mode">Toggle Dark Mode</button>
+      <button id="toggle-rounded">Toggle Rounded</button>
+
+      <hr />
+
+      <h3>CSS METHOD</h3>
+
+      <button id="red-background">Red Background</button>
+      <button id="reset-background">Reset Background</button>
+
+      <hr />
+
+      <h3>HIDE & SHOW</h3>
+
+      <button id="hide-photo">Hide Photo</button>
+      <button id="show-photo">Show Photo</button>
+      <button id="toggle-bio">Toggle Bio</button>
+
+      <hr />
+
+      <h3>FADE</h3>
+
+      <button id="fade-out-card">Fade Out Card</button>
+      <button id="fade-in-card">Fade In Card</button>
+      <button id="fade-half">Fade To 50%</button>
+
+      <hr />
+
+      <h3>SLIDE</h3>
+
+      <button id="slide-up-skills">Slide Up Skills</button>
+      <button id="slide-down-skills">Slide Down Skills</button>
+      <button id="slide-toggle-skills">Slide Toggle Skills</button>
+
+      <hr />
+
+      <h3>ANIMATE</h3>
+
+      <button id="animate-card">Animate Card</button>
+    </div>
+
+    <div id="output">Output will appear here...</div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        /* ==========================
+               1. GET & SET
+            ========================== */
+
+        $("#show-name").click(function () {
+          let name = $("#student-name").text();
+          $("#output").text(name);
+        });
+
+        $("#change-name").click(function () {
+          $("#student-name").text("AnshuBhatt");
+        });
+
+        $("#show-bio").click(function () {
+          let bio = $("#student-bio").html();
+          $("#output").text(bio);
+        });
+
+        $("#get-input").click(function () {
+          let nickname = $("#nickname-input").val();
+          $("#output").text(nickname);
+        });
+
+        $("#set-input").click(function () {
+          $("#nickname-input").val("jQuery Pro");
+        });
+
+        /* ==========================
+               2. CSS CLASSES
+            ========================== */
+
+        $("#highlight-card").click(function () {
+          $("#profile-card").addClass("highlighted");
+        });
+
+        $("#remove-highlight").click(function () {
+          $("#profile-card").removeClass("highlighted");
+        });
+
+        $("#toggle-dark-mode").click(function () {
+          $("#profile-card").toggleClass("dark-mode");
+        });
+
+        $("#toggle-rounded").click(function () {
+          $("#profile-photo").toggleClass("rounded");
+        });
+
+        /* ==========================
+               3. CSS METHOD
+            ========================== */
+
+        $("#red-background").click(function () {
+          $("#profile-card").css("background-color", "#e74c3c");
+        });
+
+        $("#reset-background").click(function () {
+          $("#profile-card").css("background-color", "white");
+        });
+
+        /* ==========================
+               4. HIDE & SHOW
+            ========================== */
+
+        $("#hide-photo").click(function () {
+          $("#profile-photo").hide("slow");
+        });
+
+        $("#show-photo").click(function () {
+          $("#profile-photo").show("slow");
+        });
+
+        $("#toggle-bio").click(function () {
+          $("#student-bio").toggle();
+        });
+
+        /* ==========================
+               5. FADE
+            ========================== */
+
+        $("#fade-out-card").click(function () {
+          $("#profile-card").fadeOut();
+        });
+
+        $("#fade-in-card").click(function () {
+          $("#profile-card").fadeIn();
+        });
+
+        $("#fade-half").click(function () {
+          $("#profile-card").fadeTo("slow", 0.5);
+        });
+
+        /* ==========================
+               6. SLIDE
+            ========================== */
+
+        $("#slide-up-skills").click(function () {
+          $("#skills-list").slideUp();
+        });
+
+        $("#slide-down-skills").click(function () {
+          $("#skills-list").slideDown();
+        });
+
+        $("#slide-toggle-skills").click(function () {
+          $("#skills-list").slideToggle();
+        });
+
+        /* ==========================
+               7. ANIMATE
+            ========================== */
+
+        $("#animate-card").click(function () {
+          $("#profile-card")
+            .animate({ marginLeft: "200px" }, 10
