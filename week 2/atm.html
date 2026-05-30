@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ATM Machine</title>
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .atm-box{
+      background: white;
+      width: 300px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px gray;
+    }
+
+    input{
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    button{
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover{
+      background-color: #0056b3;
+    }
+
+    h2{
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="atm-box">
+    <h2>ATM Machine</h2>
+
+    <h3 id="balance">Balance: Rs. 10000</h3>
+
+    <input type="number" id="amount" placeholder="Enter Amount">
+
+    <br>
+
+    <button onclick="checkBalance()">Check Balance</button>
+
+    <button onclick="withdrawMoney()">Withdraw</button>
+
+    <button onclick="depositMoney()">Deposit</button>
+  </div>
+
+  <script>
+
+    let balance = 10000;
+    let pin = "1234";
+
+    function updateBalance(){
+      document.getElementById("balance").innerText =
+      "Balance: Rs. " + balance;
+    }
+
+    function checkBalance(){
+      alert("Your Current Balance is Rs. " + balance);
+    }
+
+    function withdrawMoney(){
+
+      let amount =
+      parseInt(document.getElementById("amount").value);
+
+      if(amount > balance){
+        alert("Insufficient Balance");
+      }
+
+      else if(amount <= 0 || isNaN(amount)){
+        alert("Enter Valid Amount");
+      }
+
+      else{
+        balance = balance - amount;
+        updateBalance();
+        alert("Withdrawal Successful");
+      }
+    }
+
+    function depositMoney(){
+
+      let userPin = prompt("Enter ATM PIN");
+
+      if(userPin === pin){
+
+        let amount =
+        parseInt(document.getElementById("amount").value);
+
+        if(amount <= 0 || isNaN(amount)){
+          alert("Enter Valid Amount");
+        }
+
+        else{
+          balance = balance + amount;
+          updateBalance();
+          alert("Deposit Successful");
+        }
+      }
+
+      else{
+        alert("Incorrect PIN");
+      }
+    }
+
+  </script>
+
+</body>
+</html>

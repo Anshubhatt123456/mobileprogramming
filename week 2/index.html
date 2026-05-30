@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operators</title>
+</head>
+<body>
+     <label for="num1">Number 1: </label><br />
+    <input
+      type="number"
+      name=""
+      id="number1"
+      placeholder="Enter 1st Number"
+    /><br />
+    <label for="num2">Number 2: </label><br />
+    <input
+      type="number"
+      name=""
+      id="number2"
+      placeholder="Enter 2st Number"
+    /><br />
+    <h3 id="operators"></h3>
+
+    <button style="background-color: rgb(255, 255, 255)" onclick="allOperators('+')">
+      Add
+    </button>
+    <button
+      style="background-color: rgb(255, 255, 255)"
+      onclick="allOperators('-')"
+    >
+      Sub
+    </button>
+    <button
+      style="background-color: rgb(255, 255, 255)"
+      onclick="allOperators('*')"
+    >
+      Multiply
+    </button>
+    <button
+      style="background-color: rgb(255, 255, 255)"
+      onclick="allOperators('/')"
+    >
+      Division
+    </button>
+
+   <script src="index.js"></script>
+  </body>
+</html>
