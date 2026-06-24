@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FarmNest – Fresh & Local Marketplace</title>
+    <!-- Font Awesome (icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="app-wrapper">
+
+        <!-- ===================== HOME PAGE ===================== -->
+        <div class="page active" id="page-home">
+            <div class="logo-area">
+                <img src="https://cdn-icons-png.flaticon.com/512/2909/2909763.png" alt="FarmNest logo" class="logo-img" />
+                <h1 class="app-title">FarmNest</h1>
+                <p class="app-subtitle">Fresh &amp; Local Marketplace</p>
+            </div>
+
+            <input class="search-bar" type="text" placeholder="Search products..." id="homeSearch" />
+
+            <img class="banner-img" src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800" alt="banner" />
+
+            <h2 class="section-title">Featured Products</h2>
+
+            <div class="product-grid" id="homeProductGrid">
+                <!-- cards will be rendered by JS -->
+            </div>
+
+            <h2 class="section-title">Categories</h2>
+            <div class="categories-wrap" id="homeCategories">
+                <!-- rendered by JS -->
+            </div>
+
+            <h2 class="section-title">Quick Stats</h2>
+            <div class="stats-row" id="homeStats">
+                <!-- rendered by JS -->
+            </div>
+        </div>
+
+        <!-- ===================== SELL PAGE ===================== -->
+        <div class="page" id="page-sell">
+            <h2 class="sell-title">📦 List Your Product</h2>
+            <p class="sell-sub">Sell fresh produce or homemade goods to the local community</p>
+
+            <div class="form-group">
+                <label for="sellName">Product Name</label>
+                <input type="text" id="sellName" placeholder="e.g. Fresh Cow Milk" />
+            </div>
+
+            <div class="form-group">
+                <label for="sellPrice">Price (Rs.)</label>
+                <input type="number" id="sellPrice" placeholder="e.g. 120" />
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <div class="category-selector" id="categorySelector">
+                    <span class="cat-opt active" data-cat="Dairy">Dairy</span>
+                    <span class="cat-opt" data-cat="Vegetables">Vegetables</span>
+                    <span class="cat-opt" data-cat="Fruits">Fruits</span>
+                    <span class="cat-opt" data-cat="Homemade">Homemade</span>
+                    <span class="cat-opt" data-cat="Other">Other</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sellDesc">Description</label>
+                <textarea id="sellDesc" placeholder="Describe your product..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Product Image</label>
+                <div class="upload-btn" id="uploadBtn">📷 Upload Image</div>
+            </div>
+
+            <button class="btn-primary" id="sellBtn">List Product for Sale</button>
+
+            <div class="tips-box">
+                <h4>💡 Seller Tips</h4>
+                <p>• Add clear, high-quality photos</p>
+                <p>• Be honest about product freshness</p>
+                <p>• Set competitive prices</p>
+                <p>• Respond to customer inquiries quickly</p>
+            </div>
+        </div>
+
+        <!-- ===================== BUY PAGE ===================== -->
+        <div class="page" id="page-buy">
+            <div class="buy-header">
+                <h2>🛒 Shop Local</h2>
+            </div>
+
+            <input class="search-bar" type="text" placeholder="Search products..." id="buySearch" />
+
+            <div class="filter-scroll" id="filterContainer">
+                <!-- chips rendered by JS -->
+            </div>
+
+            <div class="buy-list" id="buyList"></div>
+        </div>
+
+        <!-- ===================== PROFILE PAGE ===================== -->
+        <div class="page" id="page-profile">
+            <div class="profile-header">
+                <img class="profile-avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400" alt="avatar" />
+                <div class="profile-name">Ramesh Kumar</div>
+                <div class="profile-role">🌾 Farmer &amp; Seller</div>
+                <div class="profile-location">📍 Mahendranagar, Nepal</div>
+            </div>
+
+            <div class="profile-stats" id="profileStats">
+                <!-- rendered by JS -->
+            </div>
+
+            <h3 class="menu-section-title">Account Settings</h3>
+            <div class="menu-list" id="accountMenu">
+                <!-- rendered by JS -->
+            </div>
+
+            <h3 class="menu-section-title">Preferences</h3>
+            <div class="menu-list" id="preferencesMenu">
+                <!-- rendered by JS -->
+            </div>
+
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+            <div class="version">FarmNest v1.0.0</div>
+        </div>
+
+        <!-- ===================== BOTTOM TAB BAR ===================== -->
+        <div class="tab-bar">
+            <button class="tab-btn active" data-page="page-home"><i class="fas fa-home"></i><span>Home</span></button>
+            <button class="tab-btn" data-page="page-sell"><i class="fas fa-plus-circle"></i><span>Sell</span></button>
+            <button class="tab-btn" data-page="page-buy"><i class="fas fa-shopping-cart"></i><span>Buy</span></button>
+            <button class="tab-btn" data-page="page-profile"><i class="fas fa-user"></i><span>Profile</span></button>
+        </div>
+
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="importmap">
+        {
+            "imports": {
+                "firebase/app": "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js",
+                "firebase/database": "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js"
+            }
+        }
+    </script>
+
+    <!-- External JavaScript -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
